@@ -1,0 +1,305 @@
+﻿@charset "UTF-8";
+/* ----------------------------------------
+  Dancing☆Onigiri (CW Edition)
+  本体cssファイル
+
+  Created : 2018/10/08
+  Revised : 2021/04/07 (v21.4.2)
+
+  https://github.com/cwtickle/danoniplus
+------------------------------------------ */
+
+#canvas-frame {
+	height:500px;
+	position: relative;
+	overflow: hidden;
+}
+#canvas-frame canvas {
+	position: absolute;
+	left:0;
+	overflow: hidden;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	background: transparent;
+	height: 20px;
+	width: 205px;
+}
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	background: #606060;
+	height: 20px;
+	width: 20px;
+	opacity: 0.5;
+	border-radius: 50%;
+}
+input[type=range]::-moz-range-track{
+	height: 0;
+}
+input[type=range]::-moz-range-thumb{
+	background: #606060;
+	height: 20px;
+	width: 20px;
+	opacity: 0.5;
+	border: none;
+	border-radius: 50%;
+}
+input[type=range]:focus {
+	outline: 0;
+}
+
+/* 左から右へ */
+@keyframes leftToRight {
+	0% {
+		opacity: 0;/* 透明 */
+		transform: translateX(-50px);
+	}
+	100% {
+		opacity: 1;/* 不透明 */
+		transform: translateX(0);
+	}
+}
+
+/* 上から下へ */
+@keyframes upToDown {
+	0% {
+		opacity: 0;/* 透明 */
+		transform: translateY(-50px);
+	}
+	100% {
+		opacity: 1;/* 不透明 */
+		transform: translateY(0);
+	}
+}
+
+/* 左から右へ移動し、フェードアウト（結果画面で使用） */
+@keyframes leftToRightFade {
+	0% {
+		opacity: 0;/* 透明 */
+		transform: translateX(-30px);
+	}
+	30% {
+		opacity: 1;/* 不透明 */
+		transform: translateX(0);
+	}
+	60% {
+		opacity: 1;/* 不透明 */
+		transform: translateX(0);
+	}
+	100% {
+		opacity: 0;/* 透明 */
+		transform: translateX(30px);
+	}
+}
+
+/* 上から下へ移動し、フェードアウト（結果画面で使用） */
+@keyframes upToDownFade {
+	0% {
+		opacity: 0;/* 透明 */
+		transform: translateY(-30px);
+	}
+	30% {
+		opacity: 1;/* 不透明 */
+		transform: translateY(0);
+	}
+	80% {
+		opacity: 1;/* 不透明 */
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;/* 透明 */
+		transform: translateY(10px);
+	}
+}
+
+/* 徐々に表示（結果画面で使用） */
+@keyframes slowlyAppearing {
+	0% {
+		opacity: 0.5;/* 透明 */
+	}
+	80% {
+		opacity: 0.5;/* 透明 */
+	}
+	100% {
+		opacity: 1;/* 不透明 */
+	}
+}
+
+/* 文字拡大から元のサイズへ戻る */
+@keyframes fromBig {
+	0% {
+		opacity: 0;/* 透明 */
+		transform: scale(1.5, 1.5);
+		
+	}
+	100% {
+		opacity: 1;/* 不透明 */
+		transform: scale(1, 1);
+	}
+}
+
+/* 徐々に表示(Y方向) */
+@keyframes smallToNormalY {
+	0% {
+		opacity: 0;/* 透明 */
+		transform: scale(1, 0);
+	}
+	100% {
+		opacity: 1;/* 不透明 */
+		transform: scale(1, 1);
+	}
+}
+
+/* X軸回転 */
+@keyframes spinX {
+	0% {
+		transform: rotateX(0deg);
+	}
+	100% {
+		transform: rotateX(360deg);
+	}
+}
+
+/* Y軸回転 */
+@keyframes spinY {
+	0% {
+		transform: rotateY(0deg);
+	}
+	100% {
+		transform: rotateY(360deg);
+	}
+}
+
+/* Z軸回転 */
+@keyframes spinZ {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	100% {
+		transform: rotateZ(360deg);
+	}
+}
+
+/* ぼかし */
+@keyframes blur {
+	0% {
+		filter: blur(8px);
+	}
+	100% {
+		filter: blur(0);
+	}
+}
+
+/* 発光から暗くなり元に戻る */
+@keyframes brightToDark {
+	0% {
+		filter: brightness(0.0);
+	}
+	30% {
+		filter: brightness(2.0);
+	}
+	70% {
+		filter: brightness(0.0);
+	}
+	100% {
+		filter: brightness(1.0);
+	}
+}
+
+/* フェードイン */
+@keyframes fadeIn0 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeIn1 {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* フェードアウト */
+@keyframes fadeOut0 {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes fadeOut1 {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.toRight {
+	animation-name: leftToRight;
+}
+.toSpin {
+	animation-name: spinY;
+}
+
+/* 設定画面：ゲージ設定詳細 */
+.settings_gaugeVal {
+	font-size:12px;
+}
+.settings_gaugeDivCover {
+	border: 1px #666666 solid;
+	width: 280px;
+}
+.settings_gaugeDivTable {
+	display: table;
+	width: 279px;
+}
+.settings_gaugeDivTableCol {
+	display: table-cell;
+	border-collapse: collapse;
+}
+.settings_gaugeStart {
+	width: 85px;
+}
+.settings_gaugeEtc {
+	width: 65px;
+}
+
+/* ライフゲージボーダー */
+.life_Border {
+	font-size: 12px;
+	padding-right: 5px;
+	text-align: right;
+}
+
+/* ボタン一般 */
+.button_common {
+	transition: background-color 0.25s linear;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	cursor: default;
+}
+.button_common:hover {
+	cursor: pointer;
+}
+
+.flex_centering {
+	display: flex;
+	justify-content: center;
+}
+
+/* 警告ウィンドウ */
+#lblWarning > p {
+	margin: 15px 5px;
+}
